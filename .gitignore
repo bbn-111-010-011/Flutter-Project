@@ -13,5 +13,5 @@ linux/flutter/ephemeral/
 macos/Flutter/ephemeral/
 windows/flutter/ephemeral/
 
-# Divers
+# Logs
 *.log
