@@ -14,8 +14,8 @@ class Achat {
   factory Achat.fromSupabase(Map<String, dynamic> json) {
     return Achat(
       id: json['id'].toString(),
-      date: DateTime.tryParse(json['created_at'].toString()) ?? DateTime.now(),
-      total: double.tryParse(json['total'].toString()) ?? 0,
+      date: DateTime.tryParse((json['date_achat'] ?? json['created_at'] ?? '').toString()) ?? DateTime.now(),
+      total: double.tryParse((json['montant_total'] ?? json['total'] ?? 0).toString()) ?? 0,
       articles: json['articles'] is List ? json['articles'] : [],
     );
   }

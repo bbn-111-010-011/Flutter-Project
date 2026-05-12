@@ -12,7 +12,16 @@ class PanierProvider extends ChangeNotifier {
   String errorMessage = '';
 
   int get count => items.length;
-  double get total => items.fold(0, (sum, item) => sum + item.total);
+
+  double get total {
+    double somme = 0;
+
+    for (final item in items) {
+      somme += item.total;
+    }
+
+    return somme;
+  }
 
   Future<void> loadPanier() async {
     isLoading = true;
@@ -43,8 +52,8 @@ class PanierProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> removeItem(String cartItemId) async {
-    await _supabaseService.removeFromPanier(cartItemId);
+  Future<void> removeItem(dynamic cartItemId) async {
+    await _supabaseService.removeFromPanier(cartItemId.toString());
     await loadPanier();
   }
 
@@ -52,5 +61,14 @@ class PanierProvider extends ChangeNotifier {
     await _supabaseService.clearPanier();
     items.clear();
     notifyListeners();
+  }
+
+  // Méthodes en français si certains écrans les utilisent plus tard
+  Future<void> chargerPanier() async {
+    await loadPanier();
+  }
+
+  Future<void> viderPanier() async {
+    await clearPanier();
   }
 }

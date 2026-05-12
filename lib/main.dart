@@ -9,16 +9,11 @@ import 'providers/achat_provider.dart';
 import 'providers/onboarding_provider.dart';
 import 'services/supabase_service.dart';
 import 'router.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-import 'services/supabase_config.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Supabase.initialize(
-    url: SupabaseConfig.url,
-    anonKey: SupabaseConfig.anonKey,
-  );
+  await SupabaseService.initialize();
 
   runApp(const MyApp());
 }

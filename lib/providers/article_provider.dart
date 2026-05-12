@@ -20,7 +20,9 @@ class ArticleProvider extends ChangeNotifier {
   double? minPrice;
   double? maxPrice;
 
-  List<Article> get allArticles => [...supabaseArticles, ...apiArticles];
+  // On affiche d'abord les articles de l'API Fake Platzi,
+  // puis on ajoute les articles proposés depuis Supabase à la fin.
+  List<Article> get allArticles => [...apiArticles, ...supabaseArticles];
 
   List<Article> get filteredArticles {
     return allArticles.where((article) {
@@ -38,16 +40,30 @@ class ArticleProvider extends ChangeNotifier {
     errorMessage = '';
     notifyListeners();
 
+    // 1) Chargement prioritaire depuis l'API Fake Platzi.
     try {
       apiArticles = await _apiService.getArticles();
-      supabaseArticles = await _supabaseService.getArticlesProposes();
       categories = await _apiService.getCategories();
     } catch (e) {
-      errorMessage = e.toString();
+      errorMessage = 'Erreur lors du chargement des articles API : $e';
+      isLoading = false;
+      notifyListeners();
+      return;
     }
 
+    // On affiche déjà les articles API, même si Supabase n'est pas prêt.
     isLoading = false;
     notifyListeners();
+
+    // 2) Chargement secondaire depuis Supabase.
+    // Si la table n'existe pas ou si Supabase a un souci, on ignore l'erreur.
+    try {
+      supabaseArticles = await _supabaseService.getArticlesProposes();
+      notifyListeners();
+    } catch (_) {
+      supabaseArticles = [];
+      notifyListeners();
+    }
   }
 
   Article? findById(String id) {

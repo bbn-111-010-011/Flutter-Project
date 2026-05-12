@@ -1,0 +1,29 @@
+[33mc911f71[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/feature/panier-sqflite[m[33m, [m[1;32mfeature/panier-sqflite[m[33m)[m merge: fusionner les fichiers complets dans master
+[33maa2c069[m chore: nettoyer les fichiers generes
+[33mfc6992e[m[33m ([m[1;31morigin/feature/favoris-sharedpreferences[m[33m, [m[1;32mfeature/favoris-sharedpreferences[m[33m)[m Merge branch 'master' into feature/favoris-sharedpreferences
+[33mb595276[m ajout des dernier commit et fonctionalité
+[33mfa19b4c[m  ajout des fonctionalite restante et commit non push encore
+[33m47a86b3[m chore: ajouter la configuration iOS
+[33m273e998[m chore: ajouter la configuration Web
+[33me0eee7b[m  dependances du projet
+[33me22aef4[m chore: ajouter les fichiers de configuration Flutter
+[33m9464ece[m feat: ajouter le provider de l'ecran d'accueil
+[33m9431eca[m feat: ajouter le service API Platzi
+[33m3e1cc20[m  améliorer l'affichage des écrans
+[33ma2f4569[m permettrel'ajout d'un article au panier
+[33m32cdaa9[m   l'écran du panier
+[33m5d2c960[m  provider de gestion du panier
+[33m5ba00fa[m  ajout de  la déconnexion utilisateur
+[33m6abc988[m  ajout de l'écran de création de compte
+[33m25355a6[m ajout de l'écran de connexion
+[33md049231[m  ajout de l'écran des articles favoris
+[33m27e6071[m  ajout du provider de gestion des favoris
+[33mf719e32[m ajout delapersistance  de sauvegarde locale SharedPreferences
+[33m6ce321d[m feat: ajout des widgets d'affichage des articles
+[33m5ebdfb1[m ajout de  l'écran de consultation des articles
+[33m6617a5c[m  ajoute de  l'écran d'accueil
+[33m41acf0c[m  ajoute du provider de gestion des articles
+[33mdb51ea8[m feat: ajoute du  modèle Achat
+[33m68f7f00[m feat: ajouter le modèle CartItem
+[33m91f6872[m feat: ajouter le modèle Article
+[33m7004f2a[m chore: initialiser la structure principale Flutter

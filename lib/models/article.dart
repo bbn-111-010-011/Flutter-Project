@@ -43,23 +43,23 @@ class Article {
   factory Article.fromSupabase(Map<String, dynamic> json) {
     return Article(
       id: json['id'].toString(),
-      title: json['title']?.toString() ?? 'Sans titre',
-      price: double.tryParse(json['price'].toString()) ?? 0,
-      description: json['description']?.toString() ?? '',
-      category: json['category']?.toString() ?? 'Sans catégorie',
-      imageUrl: json['image_url']?.toString() ?? '',
+      title: (json['titre'] ?? json['title'] ?? 'Sans titre').toString(),
+      price: double.tryParse((json['prix'] ?? json['price'] ?? 0).toString()) ?? 0,
+      description: (json['description'] ?? '').toString(),
+      category: (json['categorie'] ?? json['category'] ?? 'Sans catégorie').toString(),
+      imageUrl: (json['image'] ?? json['image_url'] ?? '').toString(),
       fromSupabase: true,
     );
   }
 
-  Map<String, dynamic> toSupabaseJson(String userId) {
+  Map<String, dynamic> toSupabaseJson(String utilisateurId) {
     return {
-      'user_id': userId,
-      'title': title,
-      'price': price,
+      'utilisateur_id': utilisateurId,
+      'titre': title,
+      'prix': price,
       'description': description,
-      'category': category,
-      'image_url': imageUrl,
+      'categorie': category,
+      'image': imageUrl,
     };
   }
 }
